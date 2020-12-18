@@ -14,7 +14,7 @@ import {
 	Collapse,
 } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	bullet: {
 		display: "inline-block",
 		margin: "0 2px",
@@ -26,7 +26,12 @@ const useStyles = makeStyles({
 	pos: {
 		marginBottom: 12,
 	},
-});
+	[theme.breakpoints.up("sm")]: {
+		title: {
+			color: "red",
+		},
+	},
+}));
 
 function CoffeeCard(props) {
 	const classes = useStyles();
@@ -37,6 +42,7 @@ function CoffeeCard(props) {
 	return (
 		<Card>
 			<CardHeader
+				className={classes.title}
 				avatar={<Avatar aria-label='recipe' src={avatarUrl} />}
 				action={
 					<IconButton aria-label='share'>
